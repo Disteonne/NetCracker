@@ -45,7 +45,7 @@ public class ControlFlowStatements1Impl implements ControlFlowStatements1 {
         int[][] array = new int[8][5];
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 5; j++) {
-                array[i][j] = (i+2)*(j-1);
+                array[i][j] = i*j;
             }
         }
         return array;
@@ -53,10 +53,10 @@ public class ControlFlowStatements1Impl implements ControlFlowStatements1 {
 
     @Override
     public int getMinValue(int[][] array) {
-        int[] ar = new int[8];
-        for (int i = 0; i < 8; i++) {
+        int[] ar = new int[array.length];
+        for (int i = 0; i < array.length; i++) {
             int min = array[i][0];
-            for (int j = 0; j < 5; j++) {
+            for (int j = 0; j < array[0].length; j++) {
                 if (min > array[i][j]) {
                     min = array[i][j];
                 }
@@ -84,26 +84,6 @@ public class ControlFlowStatements1Impl implements ControlFlowStatements1 {
         bankDeposit.amount = newSum;
         bankDeposit.years = years;
         return bankDeposit;
-    }
-
-    public static void main(String[] args) {
-        ControlFlowStatements1 object = new ControlFlowStatements1Impl();
-
-        System.out.println(object.getFunctionValue(-4));
-
-        int[][] arrayTest = object.initArray();
-
-        for (int i = 0; i < 8; i++) {
-            for (int j = 0; j < 5; j++) {
-                System.out.print(arrayTest[i][j] + "\t");
-            }
-            System.out.println();
-        }
-        System.out.println(object.decodeWeekday(3));
-        System.out.println(object.getMinValue(arrayTest));
-        BankDeposit bankDeposit111 = new BankDeposit();
-        bankDeposit111 = object.calculateBankDeposit(100);
-        System.out.println(bankDeposit111);
     }
 
 }
