@@ -1,0 +1,17 @@
+ControlFlowStatements1 object = new ControlFlowStatements1Impl();
+
+        System.out.println(object.getFunctionValue(-4));
+
+        int[][] arrayTest = object.initArray();
+
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 5; j++) {
+                System.out.print(arrayTest[i][j] + "\t");
+            }
+            System.out.println();
+        }
+        System.out.println(object.decodeWeekday(3));
+        System.out.println(object.getMinValue(arrayTest));
+        BankDeposit bankDeposit111 = new BankDeposit();
+        bankDeposit111 = object.calculateBankDeposit(100);
+        System.out.println(bankDeposit111);
