@@ -1,15 +1,11 @@
 package ru.skillbench.tasks.basics.math;
 
-
-import java.lang.reflect.Array;
 import java.util.Arrays;
-import java.util.Map;
-
 public class ArrayVectorImpl implements ArrayVector {
     //private ArrayVectorImpl arVector;
     private double[] vector;
 
-    ArrayVectorImpl() {
+   public ArrayVectorImpl() {
         vector = new double[100];
     }
      
@@ -38,11 +34,14 @@ public class ArrayVectorImpl implements ArrayVector {
 
     @Override
     public ArrayVector clone() {
-        ArrayVectorImpl arVector = new ArrayVectorImpl();
-        arVector.vector = get();
-
-        // aV= (ArrayVector) Arrays.clone(vector);
-        return (ArrayVector) arVector;
+        ArrayVectorImpl clone=new ArrayVectorImpl();
+        System.arraycopy(vector,0,clone.vector,0,vector.length);
+        clone.vector=Arrays.copyOf(clone.vector,vector.length);
+        // 1й вариант:
+        //ArrayVector arVector = new ArrayVectorImpl();
+        //arVector.set(vector);
+        //return (ArrayVector) arVector;
+        return clone;
     }
 
 
@@ -75,14 +74,23 @@ public class ArrayVectorImpl implements ArrayVector {
 
     @Override
     public double getMax() {
-        Arrays.sort(vector);
-        return vector[vector.length - 1];
+        double[] tmpArray=new double[vector.length];
+        for (int i = 0; i < tmpArray.length; i++) {
+            tmpArray[i]=vector[i];
+        }
+        Arrays.sort(tmpArray);
+        return tmpArray[tmpArray.length-1];
+
     }
 
     @Override
     public double getMin() {
-        Arrays.sort(vector);
-        return vector[0];
+        double[] tmpArray=new double[vector.length];
+        for (int i = 0; i < tmpArray.length; i++) {
+            tmpArray[i]=vector[i];
+        }
+        Arrays.sort(tmpArray);
+        return tmpArray[0];
     }
 
     @Override
@@ -146,64 +154,5 @@ public class ArrayVectorImpl implements ArrayVector {
         return Math.sqrt(CLONE.scalarMult(CLONE));
     }
 
-    public static void main(String[] args) {
-        double[] r;
-        //test SET
-        ArrayVectorImpl a = new ArrayVectorImpl();
-        a.set(1, 45, 1.7, 9);
-        //test CLONE
-        ArrayVector arvect = a.clone();
-        r = arvect.get();
 
-        for (int i = 0; i < r.length; i++) {
-            System.out.println(r[i]);
-        }
-        System.out.println();
-        //SET INDEX
-        a.set(5, 6.8);
-        r = a.get();
-        for (int i = 0; i < r.length; i++) {
-            System.out.println(r[i] + " " + r.length);
-        }
-
-        //GET INDEX
-        System.out.println(a.get(2));
-
-        //GET MAX
-        System.out.println();
-        System.out.println(a.getMax());
-
-        //MULTI
-        a.mult(5);
-        r = a.get();
-        for (int i = 0; i < r.length; i++) {
-            System.out.println(r[i]);
-        }
-
-        //SUM
-        ArrayVectorImpl ar1 = new ArrayVectorImpl();
-        ar1.set(1, 1, 1);
-        ArrayVectorImpl ar2 = new ArrayVectorImpl();
-        ar2.set(2.0, 2.3);
-        ar1.sum(ar2);
-        for (int i = 0; i < ar1.get().length; i++) {
-            System.out.print(ar1.get()[i] + "\t");
-        }
-
-        System.out.println();
-        System.out.println(ar1.scalarMult(ar2));
-
-        //SCALAR
-        ArrayVectorImpl ar3 = new ArrayVectorImpl();
-        ar3.set(1.0, 1.0, 1.0);
-        ArrayVectorImpl ar4 = new ArrayVectorImpl();
-        ar4.set(1.0, 2.4, 1.0);
-        double res = ar3.scalarMult(ar4);
-        System.out.println(res);
-        System.out.println();
-        //NORMA
-        ArrayVectorImpl ar5 = new ArrayVectorImpl();
-        ar5.set(1, 9, 3);
-        System.out.println(ar5.getNorm());
-    }
 }
