@@ -1,7 +1,6 @@
 package ru.skillbench.tasks.basics.math;
 
 import java.util.Arrays;
-import java.util.regex.Pattern;
 
 public class ComplexNumberImpl implements ComplexNumber {
     private double re;
@@ -19,9 +18,38 @@ public class ComplexNumberImpl implements ComplexNumber {
     }
 
     public ComplexNumberImpl(String complexNumber) {
+        set(complexNumber);
+    }
+
+    @Override
+    public double getRe() {
+        return re;
+    }
+
+    @Override
+    public double getIm() {
+        return im;
+    }
+
+    @Override
+    public boolean isReal() {
+        if (re != 0 && im == 0)
+            return true;
+        else
+            return false;
+    }
+
+    @Override
+    public void set(double re, double im) {
+        this.re = re;
+        this.im = im;
+    }
+
+    @Override
+    public void set(String value) throws NumberFormatException {
         String reE = "";
         String imM = "";
-        char[] coml = complexNumber.toCharArray();
+        char[] coml = value.toCharArray();
         char[] charRe = new char[10];
         char[] charIm = new char[10];
         //иниц массив
@@ -32,41 +60,41 @@ public class ComplexNumberImpl implements ComplexNumber {
         }
         //Проверка ввода
 
-
+/*
         char[] alphabet = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
         char[] ALPHABET = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
         char[] alphabetRU = {'а', 'б', 'в', 'г', 'д', 'е', 'ё', 'ж', 'з', 'и', 'й', 'к', 'л', 'м', 'н', 'о', 'п', 'р', 'с', 'т', 'у', 'ф', 'х', 'ц', 'ч', 'ш', 'щ', 'э', 'ю', 'я'};
         char[] ALPHABETRU = {'А', 'Б', 'В', 'Г', 'Д', 'Е', 'Ё', 'Ж', 'З', 'И', 'Й', 'К', 'Л', 'М', 'Н', 'О', 'П', 'Р', 'С', 'Т', 'У', 'Ф', 'Х', 'Ц', 'Ч', 'Ш', 'Щ', 'Э', 'Ю', 'Я'};
-        char[] symbols = {'.', '*', '/'};
+        char[] symbols = {'*', '/', '?', ',', '{', '}', '[', ']', '|', ';', ':', '&', '%', '$', '#', '№', '@', '"', '^'};
         //Проверка на ввод
         //
         for (int i = 0; i < coml.length; i++) {
             for (int j = 0; j < alphabet.length; j++) {
-                if(coml[i]==alphabet[j])
-                    throw  new NumberFormatException();
+                if (coml[i] == alphabet[j])
+                    throw new NumberFormatException();
             }
         }
         for (int i = 0; i < coml.length; i++) {
             for (int j = 0; j < ALPHABET.length; j++) {
-                if(coml[i]==ALPHABET[j])
+                if (coml[i] == ALPHABET[j])
                     throw new NumberFormatException();
             }
         }
         for (int i = 0; i < coml.length; i++) {
             for (int j = 0; j < alphabetRU.length; j++) {
-                if(coml[i]==alphabetRU[j])
+                if (coml[i] == alphabetRU[j])
                     throw new NumberFormatException();
             }
         }
         for (int i = 0; i < coml.length; i++) {
             for (int j = 0; j < ALPHABETRU.length; j++) {
-                if(coml[i]==ALPHABETRU[j])
+                if (coml[i] == ALPHABETRU[j])
                     throw new NumberFormatException();
             }
         }
         for (int i = 0; i < coml.length; i++) {
             for (int j = 0; j < symbols.length; j++) {
-                if(coml[i]== symbols[j])
+                if (coml[i] == symbols[j])
                     throw new NumberFormatException();
             }
         }
@@ -80,10 +108,16 @@ public class ComplexNumberImpl implements ComplexNumber {
             }
         }
 
+
+
+ */
         //Проверка массива с индексами знаков
+        /*
         for (int i = 0; i < count.length; i++) {
             System.out.println(count[i]);
         }
+
+         */
 
         //Разделяем на этапы
         /*
@@ -106,10 +140,10 @@ public class ComplexNumberImpl implements ComplexNumber {
                 for (int i = 0; i < coml.length - 1; i++) {
                     imM += coml[i];
                 }
-                if (coml.length == 2) {
+                if (coml.length == 1 && coml[0] != 'i') {
                     imM += '1';
                 }
-                if (coml.length == 1 && coml[0] == 'i') {
+                if (coml[0] == 'i' && coml.length == 1) {
                     imM += '1';
                 }
                 try {
@@ -145,7 +179,7 @@ public class ComplexNumberImpl implements ComplexNumber {
                 charRe[i] = coml[i];
             }
 
-            for (int i = count[1]; i < coml.length-1; i++) {
+            for (int i = count[1]; i < coml.length - 1; i++) {
                 charIm[i] = coml[i];
             }
             /*
@@ -190,7 +224,7 @@ public class ComplexNumberImpl implements ComplexNumber {
                     flag = true;
                 }
             }
-            if(flag==false){
+            if (flag == false) {
                 throw new NumberFormatException();
             }
             //тут точно будет 2ч числа
@@ -198,7 +232,7 @@ public class ComplexNumberImpl implements ComplexNumber {
             for (int i = 0; i < count[0]; i++) {
                 charRe[i] = coml[i];
             }
-            for (int i = count[0]; i < coml.length-1; i++) {
+            for (int i = count[0]; i < coml.length - 1; i++) {
                 charIm[i] = coml[i];
             }
             /*
@@ -239,74 +273,86 @@ public class ComplexNumberImpl implements ComplexNumber {
         }
     }
 
-        /*
-        for (int i = 0; i < coml.length; i++) {
-            if (coml[i] == 'i') { //имеет мнимую часть
-               if(coml[0]=='+'|| coml[0]=='-'){
-                   if(coml[0])
-               }
-              while (coml[i]!='+'|| coml[i]!='-'){
-
-              }
-                for (int j = 0; j < coml.length; j++) {
-                    temp[j] = coml[j];
-                    if ((temp[i] == '+' || temp[i] == '-') && i == 0) {
-
-                    }
-                }
-
-                for (int i = 0; i < coml.length; i++) {
-                    if ()
-                        if (index == 0 && coml[i] == 'i' || index == -1 && coml[i] == 'i') {
-                            this.re = 0.0;
-                            for (int j = 0; j < coml.length - 1; j++) {
-                                imM += coml[j];
-                            }
-                            this.im = Double.parseDouble(imM);
-                            Pattern
-                /*
-                if ((index == -1) || (index == 0 && coml[index] == '+')) {  //у нас есть мнимая часть.но нет знака + или -
-                    //в основном-тогда.когда число положительное (не пишется + по умолчанию)
-                    if (index == -1) {
-                        int k = i;
-                        for (int j = 0; j < coml.length - 1; j++) {
-                            imM += coml[j];
-                        }
-                    }
-                    if (index == 0) {
-                        for (int j = 1; j < coml.length - 1; j++) {
-                            imM += coml[j];
-                        }
-                    }
-                    this.im = Double.parseDouble(imM);
-                }
-                if (index == 0 && coml[index] == '-') {
-                    int k = i;
-                    for (int j = 1; j < coml.length - 1; j++) {
-                        imM += coml[j];
-                    }
-                    this.im = -Double.parseDouble(imM);
-                }
-
-                 */
-        /*
-                        }
-                    if (index == 0 && coml[i] != 'i' || index == -1 && coml[i] != 'i') {
-                        for (int j = 0; j < coml.length; j++) {
-                            reE += coml[i];
-                        }
-                    }
-                }
-            }
-
-         */
-
-
-    public static void main(String[] args) {
-        ComplexNumberImpl c1 = new ComplexNumberImpl("j");
-        System.out.println(c1.re);
-        System.out.println(c1.im);
+    @Override
+    public ComplexNumber copy() {
+        ComplexNumberImpl complexNumber = new ComplexNumberImpl();
+        complexNumber.set(this.re, this.im);
+        return complexNumber;
     }
+
+    @Override
+    public ComplexNumber clone() throws CloneNotSupportedException {
+        ComplexNumber clone1 = new ComplexNumberImpl();
+        clone1.set(re, im);
+        return clone1;
+    }
+
+    @Override
+    public String toString() {
+        String result = "";
+        if (re == 0.0) {
+            result = result + im + "i";
+        } else if (im == 0.0) {
+            result = result + re;
+        } else {
+            if (im > 0) {
+                result = "" + re + "+" + im + "i";
+            } else result = "" + re + "" + im + "i";
+        }
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this)
+            return true;
+        else
+            return false;
+    }
+
+    @Override
+    public int compareTo(ComplexNumber other) {
+        Double absOne = Math.pow(Math.abs(Math.pow(re, 2) + Math.pow(im, 2)), 2);
+        Double absTwo = Math.pow(Math.abs(Math.pow(other.getRe(), 2) + Math.pow(other.getIm(), 2)), 2);
+        int result = absOne.compareTo(absTwo);
+        return result;
+    }
+
+    @Override
+    public  void sort(ComplexNumber[] array) {
+        Arrays.sort(array, ComplexNumber::compareTo);
+    }
+
+    @Override
+    public ComplexNumber negate() {
+        this.re=-re;
+        this.im=-im;
+        ComplexNumber number=new ComplexNumberImpl(re,im);
+        return  number;
+    }
+
+    @Override
+    public ComplexNumber add(ComplexNumber arg2) {
+        this.re=re+arg2.getRe();
+        this.im=im+arg2.getIm();
+        ComplexNumber addComplex=new ComplexNumberImpl(re,im);
+        return addComplex;
+    }
+
+    @Override
+    public ComplexNumber multiply(ComplexNumber arg2) {
+        double Re=this.re;
+        double Im=this.im;
+        //a+bi
+        //c+di
+        //(a*c-b*d)+(b*c+a*d)i
+        this.re=Re*arg2.getRe()-Im*arg2.getIm();
+        this.im=Im*arg2.getRe()+Re*arg2.getIm();
+        ComplexNumber multiplyComplex=new ComplexNumberImpl(re,im);
+        return multiplyComplex;
+    }
+
+
 }
 
 
