@@ -8,5 +8,7 @@ public class compl {
             str+=chaR[i];
         }
         System.out.println(str);
+        String str2="-1";
+        System.out.println(Integer.parseInt(str2));
     }
 }
