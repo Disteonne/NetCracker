@@ -311,7 +311,7 @@ public class ComplexNumberImpl implements ComplexNumber {
             double objIM = temp.getIm();
 
 
-            if (Math.ceil(thisIM) == Math.ceil(objRE) && Math.ceil(thisIM) == Math.ceil(objIM))
+            if (Math.ceil(thisRE) == Math.ceil(objRE) && Math.ceil(thisIM) == Math.ceil(objIM))
                 return true;
             else {
                 return false;

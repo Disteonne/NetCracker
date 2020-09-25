@@ -1,0 +1,40 @@
+
+    public static void main(String[] args) {
+        LocationImpl l1=new LocationImpl();
+        l1.nameLoc="Moscow street.";
+        l1.typeLoc=Type.CITY;
+        LocationImpl l2=new LocationImpl();
+        l2.nameLoc="Russia";
+        l2.typeLoc=Type.COUNTRY;
+        l1.parentLoc=l2;
+
+        System.out.println(l1.isCorrect());
+        System.out.println(l1.getAddress());
+    }
+
+
+
+    /*
+                    if (typeLoc == Type.APARTMENT) {
+                        result += Type.APARTMENT.getNameForAddress() + " " + getName() + " ";
+                    }
+                    if (typeLoc == Type.BUILDING) {
+                        result += Type.BUILDING.getNameForAddress() + " " + getName() + " ";
+                    }
+                    if (typeLoc == Type.STREET) {
+                        result += Type.STREET.getNameForAddress() + " " + getName() + " ";
+                    }
+                    if (typeLoc == Type.DISTRICT) {
+                        result += Type.DISTRICT.getNameForAddress() + " " + getName() + " ";
+                    }
+                    if (typeLoc == Type.REGION) {
+                        result += Type.REGION.getNameForAddress() + " " + getName() + " ";
+                    }
+                    if (typeLoc == Type.CITY) {
+                        result += Type.CITY.getNameForAddress() + " " + getName() + " ";
+                    }
+                    if (typeLoc == Type.COUNTRY) {
+                        result += Type.COUNTRY.getNameForAddress() + " " + getName() + " ";
+                    }
+
+                     */
