@@ -1,0 +1,15 @@
+ public static void main(String[] args) {
+        ComplexNumber c1 = new ComplexNumberImpl("1.0i");
+        System.out.println(c1.getRe());
+        System.out.println(c1.getIm());
+        System.out.println(c1);
+
+        ComplexNumber c2 = new ComplexNumberImpl("1.0i");
+        System.out.println(c2.equals(c1));
+        ComplexNumber c3=new ComplexNumberImpl("1.0-0.5i");
+        ComplexNumber c4=new ComplexNumberImpl("1.0-0.499999i");
+        System.out.println(c3.equals(c4));
+        System.out.println(c3);
+        Cat cat=new Cat();
+        System.out.println(c4.equals(cat));
+    }

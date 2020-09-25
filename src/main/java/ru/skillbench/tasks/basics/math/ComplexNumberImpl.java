@@ -280,6 +280,7 @@ public class ComplexNumberImpl implements ComplexNumber {
 
     @Override
     public ComplexNumber clone() throws CloneNotSupportedException {
+        //return copy();
         ComplexNumber clone1 = new ComplexNumberImpl();
         clone1.set(re, im);
         return clone1;
@@ -302,18 +303,22 @@ public class ComplexNumberImpl implements ComplexNumber {
 
     @Override
     public boolean equals(Object obj) {
-        ComplexNumber temp = (ComplexNumberImpl) obj;
-        double RE=re;
-        double IM=im;
-        double REobj=temp.getRe();
-        double IMobj =temp.getIm();
+        if (obj instanceof ComplexNumberImpl) {
+            ComplexNumber temp = (ComplexNumberImpl) obj;
+            double thisRE = re;
+            double thisIM = im;
+            double objRE = temp.getRe();
+            double objIM = temp.getIm();
 
 
-        if (Math.ceil(RE)==Math.ceil(REobj) && Math.ceil(IM) ==Math.ceil(IMobj))
-            return true;
-        else  {
-            return false;
+            if (Math.ceil(thisIM) == Math.ceil(objRE) && Math.ceil(thisIM) == Math.ceil(objIM))
+                return true;
+            else {
+                return false;
+            }
         }
+        else
+            return false;
 
     }
 
@@ -364,20 +369,15 @@ public class ComplexNumberImpl implements ComplexNumber {
     }
 
     public static void main(String[] args) {
-        ComplexNumber c1 = new ComplexNumberImpl("1.0i");
-        System.out.println(c1.getRe());
-        System.out.println(c1.getIm());
-        System.out.println(c1);
-
-        ComplexNumber c2 = new ComplexNumberImpl("1.0i");
-        System.out.println(c2.equals(c1));
-        ComplexNumber c3=new ComplexNumberImpl("1.0-0.5i");
-        ComplexNumber c4=new ComplexNumberImpl("1.0-0.499999i");
-        System.out.println(c3.equals(c4));
-        System.out.println(c3);
+        ComplexNumber c1=new ComplexNumberImpl(1,1);
+        ComplexNumberImpl c2=new ComplexNumberImpl(1,1);
+        Cat cat=new Cat();
+        System.out.println(c1.equals(null));
     }
 
 }
+class  Cat{
 
+}
 
 

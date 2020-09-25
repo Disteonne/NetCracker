@@ -1,0 +1,24 @@
+public static void main(String[] args) {
+        EmployeeImpl employee1=new EmployeeImpl();
+        employee1.setFirstName("Irina");
+        employee1.setLastName("Cat");
+        employee1.increaseSalary(2576);
+
+
+        EmployeeImpl employee2=new EmployeeImpl();
+        employee2.setFirstName("Kate");
+        employee2.setLastName("Soboleva");
+        employee2.increaseSalary(4023);
+
+        EmployeeImpl employee3=new EmployeeImpl();
+        employee3.setFirstName("Max");
+        employee3.setLastName("Antonov");
+        employee3.increaseSalary(5460);
+
+
+        employee1.setManager(employee2);
+        employee2.setManager(employee3);
+
+        Employee topManager=employee1.getTopManager();
+        System.out.println(topManager.getFirstName()+" "+topManager.getLastName());
+    }
