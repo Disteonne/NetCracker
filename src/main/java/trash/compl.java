@@ -10,7 +10,7 @@ public class compl extends  Object{
         System.out.println(str);
         String str2="-1";
         System.out.println(Integer.parseInt(str2));
-
+    System.out.println(Math.ceil(0.499999));
     }
 
     @Override

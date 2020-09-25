@@ -7,7 +7,7 @@ public class ComplexNumberImpl implements ComplexNumber {
     private double im;
 
 
-    ComplexNumberImpl() {
+    public ComplexNumberImpl() {
         this.re = 0.0;
         this.im = 0.0;
     }
@@ -50,8 +50,8 @@ public class ComplexNumberImpl implements ComplexNumber {
         String reE = "";
         String imM = "";
         char[] coml = value.toCharArray();
-        char[] charRe = new char[10];
-        char[] charIm = new char[10];
+        char[] charRe = new char[20];
+        char[] charIm = new char[20];
         //иниц массив
         // -1 <- арифм знаков нет
         int[] count = new int[2];
@@ -60,7 +60,7 @@ public class ComplexNumberImpl implements ComplexNumber {
         }
         //Проверка ввода
 
-/*
+
         char[] alphabet = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
         char[] ALPHABET = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
         char[] alphabetRU = {'а', 'б', 'в', 'г', 'д', 'е', 'ё', 'ж', 'з', 'и', 'й', 'к', 'л', 'м', 'н', 'о', 'п', 'р', 'с', 'т', 'у', 'ф', 'х', 'ц', 'ч', 'ш', 'щ', 'э', 'ю', 'я'};
@@ -109,8 +109,6 @@ public class ComplexNumberImpl implements ComplexNumber {
         }
 
 
-
- */
         //Проверка массива с индексами знаков
         /*
         for (int i = 0; i < count.length; i++) {
@@ -304,10 +302,19 @@ public class ComplexNumberImpl implements ComplexNumber {
 
     @Override
     public boolean equals(Object obj) {
-        if (obj == this)
+        ComplexNumber temp = (ComplexNumberImpl) obj;
+        double RE=re;
+        double IM=im;
+        double REobj=temp.getRe();
+        double IMobj =temp.getIm();
+
+
+        if (Math.ceil(RE)==Math.ceil(REobj) && Math.ceil(IM) ==Math.ceil(IMobj))
             return true;
-        else
+        else  {
             return false;
+        }
+
     }
 
     @Override
@@ -319,39 +326,56 @@ public class ComplexNumberImpl implements ComplexNumber {
     }
 
     @Override
-    public  void sort(ComplexNumber[] array) {
+    public void sort(ComplexNumber[] array) {
         Arrays.sort(array, ComplexNumber::compareTo);
     }
 
     @Override
     public ComplexNumber negate() {
-        this.re=-re;
-        this.im=-im;
-        ComplexNumber number=new ComplexNumberImpl(re,im);
-        return  number;
+        double Re = this.re;
+        double Im = this.im;
+        this.re = -Re;
+        this.im = -Im;
+
+        return this;
     }
 
     @Override
     public ComplexNumber add(ComplexNumber arg2) {
-        this.re=re+arg2.getRe();
-        this.im=im+arg2.getIm();
-        ComplexNumber addComplex=new ComplexNumberImpl(re,im);
-        return addComplex;
+        double Re = this.re;
+        double Im = this.im;
+        this.re = Re + arg2.getRe();
+        this.im = Im + arg2.getIm();
+
+        return this;
     }
 
     @Override
     public ComplexNumber multiply(ComplexNumber arg2) {
-        double Re=this.re;
-        double Im=this.im;
+        double Re = this.re;
+        double Im = this.im;
         //a+bi
         //c+di
         //(a*c-b*d)+(b*c+a*d)i
-        this.re=Re*arg2.getRe()-Im*arg2.getIm();
-        this.im=Im*arg2.getRe()+Re*arg2.getIm();
-        ComplexNumber multiplyComplex=new ComplexNumberImpl(re,im);
-        return multiplyComplex;
+        this.re = Re * arg2.getRe() - Im * arg2.getIm();
+        this.im = Im * arg2.getRe() + Re * arg2.getIm();
+
+        return this;
     }
 
+    public static void main(String[] args) {
+        ComplexNumber c1 = new ComplexNumberImpl("1.0i");
+        System.out.println(c1.getRe());
+        System.out.println(c1.getIm());
+        System.out.println(c1);
+
+        ComplexNumber c2 = new ComplexNumberImpl("1.0i");
+        System.out.println(c2.equals(c1));
+        ComplexNumber c3=new ComplexNumberImpl("1.0-0.5i");
+        ComplexNumber c4=new ComplexNumberImpl("1.0-0.499999i");
+        System.out.println(c3.equals(c4));
+        System.out.println(c3);
+    }
 
 }
 
