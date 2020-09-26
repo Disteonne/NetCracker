@@ -379,8 +379,6 @@ public class ComplexNumberImpl implements ComplexNumber {
 
         return this;
     }
-
-
 }
 
 

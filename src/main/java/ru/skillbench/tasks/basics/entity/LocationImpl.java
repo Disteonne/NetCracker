@@ -222,11 +222,11 @@ public class LocationImpl implements Location {
         LocationImpl l8 = new LocationImpl();
         l8.nameLoc = "Russia";
         l8.typeLoc = Type.COUNTRY;
-        //l3.parentLoc = l4;
-        //l4.parentLoc = l5;
-        //l5.parentLoc = l6;
-        //l6.parentLoc = l7;
-        //l7.parentLoc = l8;
+        l3.parentLoc = l4;
+        l4.parentLoc = l5;
+        l5.parentLoc = l6;
+        l6.parentLoc = l7;
+        l7.parentLoc = l8;
         String str = l3.getAddress();
         System.out.println(l3.getAddress());
 
