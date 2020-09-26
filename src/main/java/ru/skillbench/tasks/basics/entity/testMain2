@@ -38,3 +38,142 @@
                     }
 
                      */
+
+
+                     _______________________________________________________________________
+                     public static void main(String[] args) {
+                             LocationImpl l1 = new LocationImpl();
+                             l1.nameLoc = "Moscow street.";
+                             l1.typeLoc = Type.CITY;
+                             LocationImpl l2 = new LocationImpl();
+                             l2.nameLoc = "Russia";
+                             l2.typeLoc = Type.COUNTRY;
+                             l1.parentLoc = l2;
+
+                             System.out.println(l1.isCorrect());
+                             System.out.println(l1.getAddress());
+
+                             LocationImpl l3 = new LocationImpl();
+                             l3.typeLoc = Type.BUILDING;
+                             l3.nameLoc = "10 к.1";
+                             LocationImpl l4 = new LocationImpl();
+                             l4.typeLoc = Type.STREET;
+                             l4.nameLoc = "ул. Академика";
+                             LocationImpl l5 = new LocationImpl();
+                             l5.typeLoc = Type.CITY;
+                             l5.nameLoc = " г. Долгопрудный";
+                             LocationImpl l6 = new LocationImpl();
+                             l6.typeLoc = Type.REGION;
+                             l6.nameLoc = "Московская обл.";
+                             LocationImpl l7 = new LocationImpl();
+                             l7.nameLoc = "Russia";
+                             l7.typeLoc = Type.COUNTRY;
+                             l3.parentLoc=l4;
+                             l4.parentLoc=l5;
+                             l5.parentLoc=l6;
+                             String str=l3.getAddress();
+                            System.out.println(l3.getAddress());
+                         }
+                         ________________________________________________
+                           public static void main(String[] args) {
+                                 LocationImpl l1 = new LocationImpl();
+                                 l1.nameLoc = "Moscow street.";
+                                 l1.typeLoc = Type.CITY;
+                                 LocationImpl l2 = new LocationImpl();
+                                 l2.nameLoc = "Russia";
+                                 l2.typeLoc = Type.COUNTRY;
+                                 l1.parentLoc = l2;
+
+                                 System.out.println(l1.isCorrect());
+                                 System.out.println(l1.getAddress());
+
+                                 LocationImpl l3 = new LocationImpl();
+                                 l3.typeLoc = Type.BUILDING;
+                                 l3.nameLoc = "10 к.1";
+                                 LocationImpl l4 = new LocationImpl();
+                                 l4.typeLoc = Type.STREET;
+                                 l4.nameLoc = "ул. Академика";
+                                 LocationImpl l5 = new LocationImpl();
+                                 l5.typeLoc = Type.CITY;
+                                 l5.nameLoc = " г. Долгопрудный";
+                                 LocationImpl l6 = new LocationImpl();
+                                 l6.typeLoc = Type.REGION;
+                                 l6.nameLoc = "Московская обл.";
+                                 LocationImpl l7=new LocationImpl();
+                                 l7.nameLoc="Moscow";
+                                 l7.typeLoc=Type.CITY;
+                                 LocationImpl l8 = new LocationImpl();
+                                 l8.nameLoc = "Russia";
+                                 l8.typeLoc = Type.COUNTRY;
+                                 l3.parentLoc=l4;
+                                 l4.parentLoc=l5;
+                                 l5.parentLoc=l6;
+                                 l6.parentLoc=l7;
+                                 l7.parentLoc=l8;
+                                 String str=l3.getAddress();
+                                 System.out.println(l3.getAddress());
+                             }
+
+                             _______________________________________________
+                              public static void main(String[] args) {
+                                     LocationImpl l1 = new LocationImpl();
+                                     l1.nameLoc = "Moscow street.";
+                                     l1.typeLoc = Type.CITY;
+                                     LocationImpl l2 = new LocationImpl();
+                                     l2.nameLoc = "Russia";
+                                     l2.typeLoc = Type.COUNTRY;
+                                     l1.parentLoc = l2;
+
+                                     System.out.println(l1.isCorrect());
+                                     System.out.println(l1.getAddress());
+                             /*
+                                     LocationImpl l3 = new LocationImpl();
+                                     l3.typeLoc = Type.BUILDING;
+                                     l3.nameLoc = "10 к.1";
+                                     LocationImpl l4 = new LocationImpl();
+                                     l4.typeLoc = Type.STREET;
+                                     l4.nameLoc = "ул. Академика";
+                                     LocationImpl l5 = new LocationImpl();
+                                     l5.typeLoc = Type.CITY;
+                                     l5.nameLoc = " г. Долгопрудный";
+                                     LocationImpl l6 = new LocationImpl();
+                                     l6.typeLoc = Type.REGION;
+                                     l6.nameLoc = "Московская обл.";
+                                     LocationImpl l7=new LocationImpl();
+                                     l7.nameLoc="Moscow";
+                                     l7.typeLoc=Type.CITY;
+                                     LocationImpl l8 = new LocationImpl();
+                                     l8.nameLoc = "Russia";
+                                     l8.typeLoc = Type.COUNTRY;
+                                     l3.parentLoc=l4;
+                                     l4.parentLoc=l5;
+                                     l5.parentLoc=l6;
+                                     l6.parentLoc=l7;
+                                     l7.parentLoc=l8;
+                                     String str=l3.getAddress();
+                                     System.out.println(l3.getAddress());
+                             */
+
+                                     LocationImpl l4 = new LocationImpl();
+                                     l4.typeLoc = Type.STREET;
+                                     l4.nameLoc = "ул. Академика";
+                                     LocationImpl l5 = new LocationImpl();
+                                     l5.typeLoc = Type.CITY;
+                                     l5.nameLoc = " г. Долгопрудный";
+                                     LocationImpl l6 = new LocationImpl();
+                                     l6.typeLoc = Type.REGION;
+                                     l6.nameLoc = "Московская обл.";
+                                     LocationImpl l7=new LocationImpl();
+                                     l7.nameLoc="Moscow";
+                                     l7.typeLoc=Type.CITY;
+                                     LocationImpl l8 = new LocationImpl();
+                                     l8.nameLoc = "Russia";
+                                     l8.typeLoc = Type.COUNTRY;
+                                     //l3.parentLoc=l4;
+                                     l4.parentLoc=l5;
+                                     l5.parentLoc=l6;
+                                     l6.parentLoc=l7;
+                                     l7.parentLoc=l8;
+                                     String str=l4.getAddress();
+                                     System.out.println(l4.getAddress());
+                                 }

@@ -303,6 +303,16 @@ public class ComplexNumberImpl implements ComplexNumber {
 
     @Override
     public boolean equals(Object obj) {
+        if(this==obj){
+            return true;
+        }
+        if(obj==null||getClass()!=obj.getClass()){
+            return false;
+        }
+        ComplexNumberImpl that= (ComplexNumberImpl) obj;
+        return Double.compare(that.re, re)==0 &&
+                Double.compare(that.im,im)==0;
+        /*
         if (obj instanceof ComplexNumberImpl) {
             ComplexNumber temp = (ComplexNumberImpl) obj;
             double thisRE = re;
@@ -311,7 +321,7 @@ public class ComplexNumberImpl implements ComplexNumber {
             double objIM = temp.getIm();
 
 
-            if (Math.ceil(thisRE) == Math.ceil(objRE) && Math.ceil(thisIM) == Math.ceil(objIM))
+            if (thisRE==objRE && thisIM == objIM)
                 return true;
             else {
                 return false;
@@ -320,6 +330,8 @@ public class ComplexNumberImpl implements ComplexNumber {
         else
             return false;
 
+
+         */
     }
 
     @Override
@@ -368,15 +380,6 @@ public class ComplexNumberImpl implements ComplexNumber {
         return this;
     }
 
-    public static void main(String[] args) {
-        ComplexNumber c1=new ComplexNumberImpl(1,1);
-        ComplexNumberImpl c2=new ComplexNumberImpl(1,1);
-        Cat cat=new Cat();
-        System.out.println(c1.equals(null));
-    }
-
-}
-class  Cat{
 
 }
 

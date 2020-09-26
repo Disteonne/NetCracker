@@ -156,7 +156,7 @@ public class LocationImpl implements Location {
     @Override
     public String getAddress() {
         String result = nameLoc + " ";
-
+        String str = "";
         if (parentLoc == null) {
             return result;
         } else {
@@ -172,16 +172,25 @@ public class LocationImpl implements Location {
                 }
             }
             if (array[array.length - 1] == '.' || indexPoint == indexEmpty - 1) {
-                result += parentLoc.getName() + " ";
+                str += nameLoc + ", " + parentLoc.getAddress() + " ";
+
             } else {
-                result += getType().getNameForAddress() + " " + parentLoc.getName();
+                // if (typeLoc!=Type.APARTMENT) {
+                //     str +=","+ typeLoc.getNameForAddress() + nameLoc + " " + getType().getNameForAddress() + " " + parentLoc.getAddress();
+                //result += getType().getNameForAddress() + " " + parentLoc.getAddress();
+                //}
+                // else
+                // getType().getNameForAddress() +
+                str += typeLoc.getNameForAddress() + nameLoc + ", " + parentLoc.getAddress();
             }
-        //getTopLocation();
+            //result+=getTopLocation().getName();
         }
-        return result+=getTopLocation().getAddress();
+
+        return str;
     }
 
     public static void main(String[] args) {
+        /*
         LocationImpl l1 = new LocationImpl();
         l1.nameLoc = "Moscow street.";
         l1.typeLoc = Type.CITY;
@@ -193,6 +202,8 @@ public class LocationImpl implements Location {
         System.out.println(l1.isCorrect());
         System.out.println(l1.getAddress());
 
+
+         */
         LocationImpl l3 = new LocationImpl();
         l3.typeLoc = Type.BUILDING;
         l3.nameLoc = "10 к.1";
@@ -206,12 +217,44 @@ public class LocationImpl implements Location {
         l6.typeLoc = Type.REGION;
         l6.nameLoc = "Московская обл.";
         LocationImpl l7 = new LocationImpl();
-        l7.nameLoc = "Russia";
-        l7.typeLoc = Type.COUNTRY;
-        l3.parentLoc=l4;
+        l7.nameLoc = "Moscow";
+        l7.typeLoc = Type.CITY;
+        LocationImpl l8 = new LocationImpl();
+        l8.nameLoc = "Russia";
+        l8.typeLoc = Type.COUNTRY;
+        //l3.parentLoc = l4;
+        //l4.parentLoc = l5;
+        //l5.parentLoc = l6;
+        //l6.parentLoc = l7;
+        //l7.parentLoc = l8;
+        String str = l3.getAddress();
+        System.out.println(l3.getAddress());
+
+/*
+        LocationImpl l4 = new LocationImpl();
+        l4.typeLoc = Type.STREET;
+        l4.nameLoc = "ул. Академика";
+        LocationImpl l5 = new LocationImpl();
+        l5.typeLoc = Type.CITY;
+        l5.nameLoc = " г. Долгопрудный";
+        LocationImpl l6 = new LocationImpl();
+        l6.typeLoc = Type.REGION;
+        l6.nameLoc = "Московская обл.";
+        LocationImpl l7=new LocationImpl();
+        l7.nameLoc="Moscow";
+        l7.typeLoc=Type.CITY;
+        LocationImpl l8 = new LocationImpl();
+        l8.nameLoc = "Russia";
+        l8.typeLoc = Type.COUNTRY;
+        //l3.parentLoc=l4;
         l4.parentLoc=l5;
         l5.parentLoc=l6;
-        String str=l3.getAddress();
-       // System.out.println(l3.getAddress());
+        l6.parentLoc=l7;
+        l7.parentLoc=l8;
+        String str=l4.getAddress();
+        System.out.println(l4.getAddress());
+
+                              */
     }
 }
+
